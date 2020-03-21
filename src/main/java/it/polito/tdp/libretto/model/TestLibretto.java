@@ -1,6 +1,5 @@
 package it.polito.tdp.libretto.model;
 
-import java.util.Collections;
 import java.util.LinkedList;
 
 public class TestLibretto {
@@ -58,15 +57,27 @@ public class TestLibretto {
 
 		System.out.println("\nVoto PaO (/Migliorato)" + ": " + l.cercaVoto("Prog. a Oggetti") + " (/"
 				+ l.cercaVotoMigliorato("Prog. a Oggetti") + ")");
+		
+		l.cancellaVoti();
 
 		LinkedList<Voto> vOrdinatiNumero = l.votiOrdinati();
 		System.out.println("\n\nVoti Libretto (ordine per Voto)\n");
 		for (Voto v : vOrdinatiNumero)
 			System.out.println(v.getNomeCorso() + " // " + v.getDataEsame() + " // " + v.getVoto());
-		
+
 		LinkedList<Voto> vOrdinatiNumeroM = l.votiMiglioratiOrdinati();
 		System.out.println("\n\n\nVoti Libretto MIGLIORATI (ordine per Voto)\n");
 		for (Voto v : vOrdinatiNumeroM)
+			System.out.println(v.getNomeCorso() + " // " + v.getDataEsame() + " // " + v.getVoto());
+
+		LinkedList<Voto> cOrdinati = l.corsiOrdinati();
+		System.out.println("\n\n\nVoti Libretto (ordine per Corso)\n");
+		for (Voto v : cOrdinati)
+			System.out.println(v.getNomeCorso() + " // " + v.getDataEsame() + " // " + v.getVoto());
+
+		LinkedList<Voto> cOrdinatiM = l.corsiMiglioratiOrdinati();
+		System.out.println("\n\n\nVoti Libretto MIGLIORATI (ordine per Corso)\n");
+		for (Voto v : cOrdinatiM)
 			System.out.println(v.getNomeCorso() + " // " + v.getDataEsame() + " // " + v.getVoto());
 	}
 

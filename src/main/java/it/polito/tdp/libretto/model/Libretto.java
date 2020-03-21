@@ -14,7 +14,6 @@ public class Libretto {
 		this.librettoMigliorato = new LinkedList<Voto>();
 	}
 
-
 	public void add(Voto v) {
 		if (votoGiaEsistente(v.getNomeCorso(), v.getVoto()) == false && corsoGiaEsistente(v.getNomeCorso()) == false) {
 			libretto.add(v);
@@ -65,15 +64,45 @@ public class Libretto {
 				return true;
 		return false;
 	}
-	
-	public LinkedList<Voto> votiOrdinati () {
+
+	public LinkedList<Voto> votiOrdinati() {
 		LinkedList<Voto> librettoTemp = new LinkedList<Voto>(libretto);
 		Collections.sort(librettoTemp, new ComparatorePerVoto());
 		return librettoTemp;
 	}
-	public LinkedList<Voto> votiMiglioratiOrdinati () {
+
+	public LinkedList<Voto> votiMiglioratiOrdinati() {
 		LinkedList<Voto> librettoTemp = new LinkedList<Voto>(librettoMigliorato);
 		Collections.sort(librettoTemp, new ComparatorePerVoto());
 		return librettoTemp;
 	}
+
+	public LinkedList<Voto> corsiOrdinati() {
+		LinkedList<Voto> librettoTemp = new LinkedList<Voto>(libretto);
+		Collections.sort(librettoTemp, new ComparatorePerNome());
+		return librettoTemp;
+	}
+
+	public LinkedList<Voto> corsiMiglioratiOrdinati() {
+		LinkedList<Voto> librettoTemp = new LinkedList<Voto>(librettoMigliorato);
+		Collections.sort(librettoTemp, new ComparatorePerNome());
+		return librettoTemp;
+	}
+
+	public void cancellaVoti() {
+		LinkedList<Voto> voti1 = new LinkedList<Voto>();
+		LinkedList<Voto> voti2 = new LinkedList<Voto>();
+
+		for (Voto v : libretto)
+			if (v.getVoto() < 24)
+				voti1.add(v);
+
+		for (Voto v : librettoMigliorato)
+			if (v.getVoto() < 24)
+				voti2.add(v);
+
+		libretto.removeAll(voti1);
+		librettoMigliorato.removeAll(voti2);
+	}
+
 }
