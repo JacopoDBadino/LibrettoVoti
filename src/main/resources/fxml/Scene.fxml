@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml" fx:controller="it.polito.tdp.libretto.FXMLController">
-    <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
-    </children>
-</AnchorPane>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.libretto.FXMLController">
+   <top>
+      <Label text="Libretto Elettronico" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox>
+               <children>
+                  <Label text="Inserire Nuovo Voto" />
+                  <TextField fx:id="testoInserito" editable="false" />
+                  <Button fx:id="buttIns" mnemonicParsing="false" onAction="#inserisciTesto" text="Inserisci" />
+                  <Button fx:id="nuovoLibretto" mnemonicParsing="false" onAction="#creaLibretto" text="Crea Libretto">
+                     <HBox.margin>
+                        <Insets left="35.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Stampa Voti" />
+                  <Button fx:id="buttSta" mnemonicParsing="false" onAction="#stampaVoti" text="Stampa" />
+                  <Label text="Stampa Voti Migliorati">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="buttStaM" mnemonicParsing="false" onAction="#stampaMigliorati" text="Stampa" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Stapa in Ordine Voto" />
+                  <Button fx:id="buttOrV" mnemonicParsing="false" onAction="#stampaOrdineVoto" text="Stampa" />
+                  <Label text="Stampa in Ordine Corso">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="buttstaC" mnemonicParsing="false" onAction="#sampaOrdineCorso" text="Stampa" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <TextArea fx:id="spazioFinale" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
